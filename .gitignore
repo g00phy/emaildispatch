@@ -24,7 +24,6 @@ logs
 target
 .DS_Store
 /.idea
-/.idea/sonarlint
 /.idea_modules
 /.classpath
 /.project

@@ -34,12 +34,12 @@ public class PersistStatisticsActor extends AbstractPersistentActor {
 	public Receive createReceiveRecover() {
 		return receiveBuilder()
 				.match(Evt.class, state::update)
-				.match(String.class, message -> notify())
+				.match(String.class, message -> notify(message))
 				.match(SnapshotOffer.class, ss -> state = (EmailState) ss.snapshot())
 				.build();
 	}
 
-	private void notify() {
+	private void notify(String message) {
 		emailDispatcher.tell(new NotifyEvent(new HashSet<String>(){{add("admin@papercut.com");}},"statistics",state.toString()),ActorRef.noSender());
 	}
 
