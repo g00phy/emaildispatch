@@ -44,24 +44,19 @@ public class EmailDispatcher extends AbstractActor{
         dispatchEmail(new EmailDetails(new HashSet<String>(){{add(csvBean.getEmailAddress());}},
                 csvBean.getSubject(),
                 csvBean.getBody(),
-                new HashSet<String>(){{add(csvBean.getEmailAddress());}},
-                new HashSet<String>(){{add(csvBean.getEmailAddress());}}));
+                new HashSet<String>(){{add(csvBean.getCcAddress());}},
+                new HashSet<String>(){{add(csvBean.getBccAddress());}}));
     }
 
     public static Props  props(EmailUtil emailUtil, ActorRef persistStatisticsActor){
-        return Props.create(new Creator<EmailDispatcher>() {
-            @Override
-            public EmailDispatcher create() throws Exception {
-                return new EmailDispatcher(emailUtil, persistStatisticsActor);
-            }
-        });
+        return Props.create((Creator<EmailDispatcher>) () -> new EmailDispatcher(emailUtil, persistStatisticsActor));
     }
 
-    public EmailDispatcher(EmailUtil emailUtil, ActorRef persistStatisticsActor) {
+    private EmailDispatcher(EmailUtil emailUtil, ActorRef persistStatisticsActor) {
         this.emailUtil = emailUtil;
         this.persistStatisticsActor = persistStatisticsActor;
-        this.cancellable =  getContext().getSystem().scheduler().schedule(Duration.Zero(),
-                Duration.create(30, TimeUnit.SECONDS),persistStatisticsActor ,"notifyadmin",
+        this.cancellable =  getContext().getSystem().scheduler().schedule(Duration.create(30, TimeUnit.MINUTES),
+                Duration.create(30, TimeUnit.MINUTES),persistStatisticsActor ,"notifyadmin",
                 getContext().dispatcher(), null);
     }
 

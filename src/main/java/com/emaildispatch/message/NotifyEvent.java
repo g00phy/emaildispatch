@@ -38,11 +38,10 @@ public class NotifyEvent {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("EmailCSVBean{");
-        sb.append("emailAddress=").append(emailAddress);
-        sb.append(", subject='").append(subject).append('\'');
-        sb.append(", body='").append(body).append('\'');
-        sb.append('}');
-        return sb.toString();
+        String sb = "EmailCSVBean{" + "emailAddress=" + emailAddress +
+                ", subject='" + subject + '\'' +
+                ", body='" + body + '\'' +
+                '}';
+        return sb;
     }
 }

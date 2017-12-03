@@ -1,24 +1,13 @@
 package com.emaildispatch.actor;
 
 import akka.actor.AbstractActor;
-import akka.actor.ActorRef;
-import akka.actor.Cancellable;
 import akka.actor.Props;
 import akka.japi.Creator;
-import akka.persistence.AbstractPersistentActor;
-import akka.persistence.SnapshotOffer;
-import com.emaildispatch.message.Cmd;
 import com.emaildispatch.message.EmailDetails;
-import com.emaildispatch.message.Evt;
 import com.emaildispatch.message.NotifyEvent;
-import com.emaildispatch.model.EmailCSVBean;
-import com.emaildispatch.model.EmailState;
 import com.emaildispatch.service.EmailUtil;
-import scala.concurrent.duration.Duration;
 
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.concurrent.TimeUnit;
 
 public class AdminEventNotifier extends AbstractActor {
 	private final EmailUtil emailUtil;
@@ -41,15 +30,10 @@ public class AdminEventNotifier extends AbstractActor {
 
 
 	public static Props  props(EmailUtil emailUtil){
-		return Props.create(new Creator<AdminEventNotifier>() {
-			@Override
-			public AdminEventNotifier create() throws Exception {
-				return new AdminEventNotifier(emailUtil);
-			}
-		});
+		return Props.create((Creator<AdminEventNotifier>) () -> new AdminEventNotifier(emailUtil));
 	}
 
-	public AdminEventNotifier(EmailUtil emailUtil) {
+	private AdminEventNotifier(EmailUtil emailUtil) {
 		this.emailUtil = emailUtil;
 	}
 

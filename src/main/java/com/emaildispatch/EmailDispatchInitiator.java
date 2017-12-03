@@ -3,8 +3,8 @@ package com.emaildispatch;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import com.emaildispatch.actor.AdminEventNotifier;
-import com.emaildispatch.actor.PersistStatisticsActor;
 import com.emaildispatch.actor.EmailDispatcher;
+import com.emaildispatch.actor.PersistStatisticsActor;
 import com.emaildispatch.message.EmailDetails;
 import com.emaildispatch.model.EmailCSVBean;
 import com.emaildispatch.service.EmailUtil;
@@ -34,7 +34,7 @@ public class EmailDispatchInitiator {
         Scanner input = new Scanner(System.in);
         final Set<String> emailAddress = new HashSet<>();
         String subject = null;
-        String body = null;
+        String body;
         final Set<String> ccAddress = new HashSet<>();
         final Set<String> bccAddress = new HashSet<>();
         while(true) {
@@ -63,7 +63,6 @@ public class EmailDispatchInitiator {
                     }
                     inputCCEmailAddress = input.nextLine();
                 }
-                ;
                 System.out.println("Enter the bcc email addresses. Hit enter to key-in a new one. Hit : to finish. Hit ; to skip");
                 String inputBCCEmailAddress = input.nextLine();
                 while (!(inputBCCEmailAddress.equals(":") || inputBCCEmailAddress.equals(";"))) {
@@ -101,50 +100,6 @@ public class EmailDispatchInitiator {
                 }
             }
 
-        /*String readString = scanner.nextLine();
-        while(readString!=null) {
-            System.out.println(readString);
-
-            if (readString.isEmpty()) {
-                System.out.println("Read Enter Key.");
-            }
-
-            if (scanner.hasNextLine()) {
-                readString = scanner.nextLine();
-            } else {
-                readString = null;
-            }
-        }
-      Person person = new Person();
-      String name = input.nextLine();
-      person.setContactName(name);
-   ...
-
-      myPersonList.add(person);
-      //#create-actors
-      final ActorRef printerActor = 
-        system.actorOf(Printer.props(), "printerActor");
-      final ActorRef howdyGreeter = 
-        system.actorOf(Greeter.props("Howdy", printerActor), "howdyGreeter");
-      final ActorRef helloGreeter = 
-        system.actorOf(Greeter.props("Hello", printerActor), "helloGreeter");
-      final ActorRef goodDayGreeter = 
-        system.actorOf(Greeter.props("Good day", printerActor), "goodDayGreeter");
-      //#create-actors
-
-      //#main-send-messages
-      howdyGreeter.tell(new Greeter.WhoToGreet("Akka"), ActorRef.noSender());
-      howdyGreeter.tell(new Greeter.Greet(), ActorRef.noSender());
-
-      howdyGreeter.tell(new Greeter.WhoToGreet("Lightbend"), ActorRef.noSender());
-      howdyGreeter.tell(new Greeter.Greet(), ActorRef.noSender());
-
-      helloGreeter.tell(new Greeter.WhoToGreet("Java"), ActorRef.noSender());
-      helloGreeter.tell(new Greeter.Greet(), ActorRef.noSender());
-
-      goodDayGreeter.tell(new Greeter.WhoToGreet("Play"), ActorRef.noSender());
-      goodDayGreeter.tell(new Greeter.Greet(), ActorRef.noSender());
-      //#main-send-messages*/
         }
     }
 

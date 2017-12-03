@@ -25,7 +25,7 @@ public class EmailState implements Serializable {
 	}
 
 	public EmailState copy() {
-		return new EmailState(new ArrayList<java.util.Date>(timestamps), countOfEmailsSent);
+		return new EmailState(new ArrayList<>(timestamps), countOfEmailsSent);
 	}
 
 	public void update(Evt evt) {

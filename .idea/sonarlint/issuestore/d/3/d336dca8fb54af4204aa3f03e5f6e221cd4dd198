@@ -1,27 +1,0 @@
-
-Isquid:EmptyStatementUsageCheck"Remove this empty statement.(Åñ­õþÿÿÿÿ
-<squid:S2189""Add an end condition to this loop.(˜ïˆžÿÿÿÿÿ
-wsquid:S1192"bDefine a constant instead of duplicating this literal "Please enter a valid mail address" 3 times.(ú¨¹„
-`squid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(š«¬©
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(µ´ðƒÿÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(‹šˆò
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(„ëë¾ÿÿÿÿÿ
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ú¨¹„
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ÜßÐ¯
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ú¨¹„
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(–Æ¾³
-M
-squid:S106"9Replace this use of System.out or System.err by a logger.(ú¨¹„
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(Ë’®øÿÿÿÿ
-R
-squid:S106"9Replace this use of System.out or System.err by a logger.(‹ä‰Àûÿÿÿÿ
-gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 45 to the 15 allowed.(Çµí‘
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ

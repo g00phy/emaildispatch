@@ -1,22 +1,34 @@
-# Compiled class file
-*.class
+*#
+*.iml
+*.ipr
+*.iws
+*.pyc
+*.tm.epoch
+*.vim
+*-shim.sbt
+*.yml
+.idea/
+/project/plugins/project
+project/boot
+/project/project/target/
+/project/target/
+target/
+/logs
+.cache
+.classpath
+.project
+.settings
+native/
+project/target/
+logs
+target
+.DS_Store
+/.idea
+/.idea/sonarlint
+/.idea_modules
+/.classpath
+/.project
+/.settings
+/RUNNING_PID
+.sonar/
 
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*

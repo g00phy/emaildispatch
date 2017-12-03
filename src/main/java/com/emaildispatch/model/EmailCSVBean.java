@@ -61,13 +61,11 @@ public class EmailCSVBean implements Serializable{
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("EmailCSVBean{");
-        sb.append("emailAddress=").append(emailAddress);
-        sb.append(", subject='").append(subject).append('\'');
-        sb.append(", body='").append(body).append('\'');
-        sb.append(", ccAddress=").append(ccAddress);
-        sb.append(", bccAddress=").append(bccAddress);
-        sb.append('}');
-        return sb.toString();
+        return  "EmailCSVBean{" + "emailAddress=" + emailAddress +
+                ", subject='" + subject + '\'' +
+                ", body='" + body + '\'' +
+                ", ccAddress=" + ccAddress +
+                ", bccAddress=" + bccAddress +
+                '}';
     }
 }

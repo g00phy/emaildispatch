@@ -1,22 +1,21 @@
 package com.emaildispatch.service;
+
+import com.emaildispatch.message.EmailDetails;
+import com.emaildispatch.model.EmailCSVBean;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
-import com.emaildispatch.message.EmailDetails;
-import com.emaildispatch.model.EmailCSVBean;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.Date;
+import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 
@@ -72,7 +71,7 @@ public class EmailUtil {
     }
 
     public List<EmailCSVBean> parseCSVWithHeader(String fileName) throws IOException {
-        List<EmailCSVBean> emails = new ArrayList<>();
+        List<EmailCSVBean> emails;
         try (Reader reader = new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream(fileName))) {
                 HeaderColumnNameMappingStrategy<EmailCSVBean> beanStrategy = new HeaderColumnNameMappingStrategy<>();
                 beanStrategy.setType(EmailCSVBean.class);
@@ -82,7 +81,6 @@ public class EmailUtil {
                                 withSeparator(',').build();
                 emails = csvToBean.parse();
                 System.out.println(emails);
-                reader.close();
         }
         return emails;
     }
