@@ -3,9 +3,7 @@ package com.emaildispatch.message;
 import java.io.Serializable;
 import java.util.Set;
 
-/**
- * Created by Sapient
- */
+
 public class EmailDetails implements Serializable{
 
     private static final long serialVersionUID = -3463950346558013212L;

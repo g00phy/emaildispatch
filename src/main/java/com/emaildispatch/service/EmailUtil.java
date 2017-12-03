@@ -60,7 +60,6 @@ public class EmailUtil {
                 msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse(bccEmail, false));
             }
 
-            System.out.println("Message is ready");
             Transport.send(msg);
 
             System.out.println("EMail Sent Successfully!!");

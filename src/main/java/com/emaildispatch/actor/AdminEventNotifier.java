@@ -2,7 +2,6 @@ package com.emaildispatch.actor;
 
 import akka.actor.AbstractActor;
 import akka.actor.Props;
-import akka.japi.Creator;
 import com.emaildispatch.message.EmailDetails;
 import com.emaildispatch.message.NotifyEvent;
 import com.emaildispatch.service.EmailUtil;
@@ -30,7 +29,7 @@ public class AdminEventNotifier extends AbstractActor {
 
 
 	public static Props  props(EmailUtil emailUtil){
-		return Props.create((Creator<AdminEventNotifier>) () -> new AdminEventNotifier(emailUtil));
+		return Props.create(AdminEventNotifier.class, () -> new AdminEventNotifier(emailUtil));
 	}
 
 	private AdminEventNotifier(EmailUtil emailUtil) {

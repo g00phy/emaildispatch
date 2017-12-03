@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Sapient
- */
+
 public class EmailState implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final List<Date> timestamps;

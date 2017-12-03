@@ -2,9 +2,7 @@ package com.emaildispatch.message;
 
 import java.util.Set;
 
-/**
- * Created by Sapient
- */
+
 public class NotifyEvent {
     private static final long serialVersionUID = -3463950346558013212L;
     private final Set<String> emailAddress;

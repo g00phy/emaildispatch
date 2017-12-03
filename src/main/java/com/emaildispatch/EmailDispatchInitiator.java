@@ -43,14 +43,16 @@ public class EmailDispatchInitiator {
             if (choice == 1) {
                 System.out.println("#####Please enter the details to compose the mail to and hit enter####");
                 System.out.println("Enter at least one email address . Hit enter to key-in a new one. Hit : to finish");
-                do {
-                    String inputEmailAddress = input.nextLine();
+                String inputEmailAddress = input.nextLine();
+                for(inputEmailAddress = input.nextLine();!inputEmailAddress.equals(":");inputEmailAddress = input.nextLine()) {
+
                     if (EmailValidator.validate(inputEmailAddress)) {
                         emailAddress.add(inputEmailAddress);
                     } else {
                         System.out.println("Please enter a valid mail address");
                     }
-                } while (!input.nextLine().equals(":"));
+
+                }
 
                 System.out.println("Enter the cc email addresses. Hit enter to key-in a new one. Hit : to finish. Hit ; to skip");
                 String inputCCEmailAddress = input.nextLine();
@@ -81,12 +83,12 @@ public class EmailDispatchInitiator {
                 }
                 System.out.println("Enter the body of the mail. Hit enter to key-in a new line. Hit : to finish");
                 StringBuilder inputBodyStr = new StringBuilder();
-                do {
-                    String inputBody = input.nextLine();
-                    if (inputSubject != null && !inputSubject.isEmpty()) {
+
+                for(String inputBody = input.nextLine();!inputBody.equals(":");inputBody = input.nextLine())  {
+                    if (inputBody != null && !inputBody.isEmpty()) {
                         inputBodyStr.append(inputBody);
                     }
-                } while (!input.nextLine().equals(":"));
+                }
                 body = inputBodyStr.toString();
                 EmailDetails emailDetails = new EmailDetails(emailAddress, subject, body, ccAddress, bccAddress);
                 emailDispatcher.tell(emailDetails, ActorRef.noSender());

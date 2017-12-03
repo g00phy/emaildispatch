@@ -4,9 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 
 import java.io.Serializable;
 
-/**
- * Created by Sapient
- */
+
 public class EmailCSVBean implements Serializable{
 
     private static final long serialVersionUID = -3463950346558013212L;

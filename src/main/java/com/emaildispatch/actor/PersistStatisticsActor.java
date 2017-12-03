@@ -2,7 +2,6 @@ package com.emaildispatch.actor;
 
 import akka.actor.ActorRef;
 import akka.actor.Props;
-import akka.japi.Creator;
 import akka.persistence.AbstractPersistentActor;
 import akka.persistence.SnapshotOffer;
 import com.emaildispatch.message.Cmd;
@@ -19,7 +18,7 @@ public class PersistStatisticsActor extends AbstractPersistentActor {
 
 
 	public static Props props(ActorRef emailDispatcher){
-		return Props.create((Creator<PersistStatisticsActor>) () -> new PersistStatisticsActor(emailDispatcher));
+		return Props.create(PersistStatisticsActor.class, () -> new PersistStatisticsActor(emailDispatcher));
 	}
 
 	private PersistStatisticsActor(ActorRef emailDispatcher) {
@@ -34,12 +33,11 @@ public class PersistStatisticsActor extends AbstractPersistentActor {
 	public Receive createReceiveRecover() {
 		return receiveBuilder()
 				.match(Evt.class, state::update)
-				.match(String.class, message -> notify(message))
 				.match(SnapshotOffer.class, ss -> state = (EmailState) ss.snapshot())
 				.build();
 	}
 
-	private void notify(String message) {
+	private void notifyAdmin() {
 		emailDispatcher.tell(new NotifyEvent(new HashSet<String>(){{add("admin@papercut.com");}},"statistics",state.toString()),ActorRef.noSender());
 	}
 
@@ -56,7 +54,7 @@ public class PersistStatisticsActor extends AbstractPersistentActor {
 							saveSnapshot(state.copy());
 					});
 				})
-				.matchEquals("notifyadmin", message -> notify())
+				.matchEquals("notifyadmin", message -> notifyAdmin())
 				.matchEquals("print", s -> System.out.println(state))
 
 				.build();

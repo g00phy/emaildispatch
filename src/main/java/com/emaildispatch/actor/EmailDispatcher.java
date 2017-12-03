@@ -5,7 +5,6 @@ import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
 import akka.actor.Cancellable;
 import akka.actor.Props;
-import akka.japi.Creator;
 import com.emaildispatch.message.Cmd;
 import com.emaildispatch.message.EmailDetails;
 import com.emaildispatch.message.NotifyEvent;
@@ -49,14 +48,14 @@ public class EmailDispatcher extends AbstractActor{
     }
 
     public static Props  props(EmailUtil emailUtil, ActorRef persistStatisticsActor){
-        return Props.create((Creator<EmailDispatcher>) () -> new EmailDispatcher(emailUtil, persistStatisticsActor));
+        return Props.create(EmailDispatcher.class, () -> new EmailDispatcher(emailUtil, persistStatisticsActor));
     }
 
     private EmailDispatcher(EmailUtil emailUtil, ActorRef persistStatisticsActor) {
         this.emailUtil = emailUtil;
         this.persistStatisticsActor = persistStatisticsActor;
         this.cancellable =  getContext().getSystem().scheduler().schedule(Duration.create(30, TimeUnit.MINUTES),
-                Duration.create(30, TimeUnit.MINUTES),persistStatisticsActor ,"notifyadmin",
+                Duration.create(10, TimeUnit.MINUTES),persistStatisticsActor ,"notifyadmin",
                 getContext().dispatcher(), null);
     }
 
