@@ -27,6 +27,6 @@ Concepts used:
 - akka actors to dispatch mails
 
 Caveats or roadmap
--application needs to be down to update the csv file.
--csv file can only accept single address under main, cc and bcc column
+- application needs to be down to update the csv file.
+- csv file can only accept single address under main, cc and bcc column
 
