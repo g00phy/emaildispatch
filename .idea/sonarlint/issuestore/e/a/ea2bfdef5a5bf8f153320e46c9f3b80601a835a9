@@ -1,0 +1,9 @@
+
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ì¼Äú
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(¼£‚
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(§Š¤ñ
+wsquid:S4087"bRemove this "close" call; closing the resource is handled automatically by the try-with-resources.(°ĞãÇ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

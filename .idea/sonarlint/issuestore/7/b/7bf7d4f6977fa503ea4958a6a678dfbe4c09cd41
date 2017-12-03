@@ -1,0 +1,9 @@
+
+M
+squid:S106"9Replace this use of System.out or System.err by a logger.(‹¨ίσ
+Csquid:S1172".Remove this unused method parameter "message".(ρτΫ±
+ssquid:S1171"YMove the contents of this initializer to a standard constructor or to field initializers.(„Òχιόÿÿÿÿ
+Fsquid:S3599",Use another way to initialize this instance.(„Òχιόÿÿÿÿ
+\squid:UselessImportCheck":Remove this unused import 'java.util.concurrent.TimeUnit'.(Ζ™ώ
+fsquid:UselessImportCheck"?Remove this unused import 'scala.concurrent.duration.Duration'.(¤ζª‘ϋÿÿÿÿ
+Usquid:UselessImportCheck"3Remove this unused import 'akka.actor.Cancellable'.(Μ―’Ò
